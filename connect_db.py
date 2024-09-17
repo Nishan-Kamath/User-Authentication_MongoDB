@@ -16,17 +16,9 @@ sample_data = {
 #inserted_id = collection.insert_one(sample_data).inserted_id
 #print(f"Document inserted with ID: {inserted_id}")
 
-for document in collection.find():
+for document in db.users.find():
     print(document)
 
 #collection.delete_many({})
-
-user = db.user_otp.find_one({"email": "nishankamath@gmail.com"})
-otp = 894953
-
-if(user['otp'] == otp):
-    print(True)
-else:
-    print(False)
 
 print("Collections in the new database:", db.list_collection_names())
