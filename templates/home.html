@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authentication</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">        
+</head>
+<body>
+    <div class="user">
+        <h1>Welcome</h1>
+        <h1><span>{{ fname }} {{ lname }}</span></h1>
+
+        <!-- Display profile picture if URL is available -->
+        <img id="profilePic" src="{{ profile_pic_url or 'default-profile-pic.jpg' }}" alt="Profile Picture" />
+    </div>
+
+    <script>
+        // JavaScript is not necessary for rendering data from Flask; it's handled by Flask templates
+    </script>
+</body>
+</html>
