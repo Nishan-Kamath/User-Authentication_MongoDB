@@ -17,7 +17,7 @@
       }
     ],
     "env": {
-      "MONGODB_URI": "@mongodb-uri",
+      "MONGODB_URI": "@MONGODB_URI",
       "FLASK_ENV": "production"
     }
   }
