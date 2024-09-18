@@ -19,11 +19,6 @@
     "env": {
       "MONGODB_URI": "@mongodb-uri",
       "FLASK_ENV": "production"
-    },
-    "functions": {
-      "app.py": {
-        "maxDuration": 10
-      }
     }
   }
-  
+s  
