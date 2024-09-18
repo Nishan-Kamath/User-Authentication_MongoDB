@@ -3,6 +3,7 @@ from email.mime.text import MIMEText
 import os
 import random
 import smtplib
+from dotenv import load_dotenv
 from flask import Flask, redirect, request, render_template, jsonify, send_file, session
 from pymongo import MongoClient
 import gridfs
@@ -11,8 +12,11 @@ from io import BytesIO
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-connection_string = "mongodb+srv://nishankamath:nishankamath@cluster0.jkgir.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-client = MongoClient(connection_string)
+#connection_string = "mongodb+srv://nishankamath:nishankamath@cluster0.jkgir.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+#client = MongoClient(connection_string)
+load_dotenv()
+mongodb_uri = os.getenv("MONGODB_URI")
+client = MongoClient(mongodb_uri)
 
 db = client.my_new_database
 collection = db.user_otp
@@ -222,7 +226,7 @@ def check_otp():
     logged_mail = session.get('logged_mail')
 
     if logged_mail:
-        otp_record = collection.find_one({"email": logged_mail,"otp":otp})
+        otp_record = db.user_otp.find_one({"email": logged_mail})
         if otp_record:
             # Correct OTP, proceed to redirect
             db.user_otp.delete_one({"email": logged_mail})
